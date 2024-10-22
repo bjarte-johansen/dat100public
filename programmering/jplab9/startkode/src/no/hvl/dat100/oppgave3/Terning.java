@@ -3,18 +3,21 @@ package no.hvl.dat100.oppgave3;
 public class Terning {
 
 	// aktuell verdi for terningen
-	private int oyne;
+	private int value;
 
 	public Terning() {
-		// TODO
+		value = 0;
 	}
 
 	public int getOyne() {
-
-		return 0; // TODO
+		if(value == 0) {
+			throw new RuntimeException("Dice must be rolled before calling getOyne");
+		}
+		
+		return value;
 	}
 
 	public void trill() {
-		// TODO
+		value = 1 + (int)(Math.random() * (6 - 1 + 1));
 	}
 }

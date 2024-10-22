@@ -14,7 +14,8 @@ public class Data {
 		this.data = data;
 	}
 	public String toString() {
-		return "" + data;
+		// "" + a === String.valueOf(a)
+		return String.valueOf(data);
 	}
 }
 
