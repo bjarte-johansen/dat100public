@@ -1,15 +1,39 @@
 package no.hvl.dat100.oppgave3;
 
-public class Terning {
+import java.util.Random;
 
-	// aktuell verdi for terningen
+class RandomSupplier{
+	private RandomSupplier() {}
+	
+	public static final Random rand = new Random();	
+}
+
+class RandomInt{
+	private RandomInt() {}
+	
+	public static int random(int max) {
+		return RandomSupplier.rand.nextInt(max);
+	}	
+	public static int random(int min, int max) {
+		return min + random(max - min);
+	}
+}
+/*
+class RandomBit{
+	public static boolean random_bit() {
+		return RandomInt.random(1 + 1) > 0;
+	}	
+}
+*/
+
+public class Terning {
 	private int value;
 
 	public Terning() {
 		value = 0;
 	}
 
-	public int getOyne() {
+	public int value() {
 		if(value == 0) {
 			throw new RuntimeException("Dice must be rolled before calling getOyne");
 		}
@@ -17,7 +41,8 @@ public class Terning {
 		return value;
 	}
 
-	public void trill() {
-		value = 1 + (int)(Math.random() * (6 - 1 + 1));
+	public int roll() {		
+		value = RandomInt.random(1, 6 + 1);
+		return value;
 	}
 }
